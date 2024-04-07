@@ -1,3 +1,5 @@
+let data = [];
+
 // Show new Quote
 function newQuote() {
     // Pick a random quote
