@@ -2,6 +2,7 @@
 const quoteText = document.getElementById('quote');
 const quoteAuthor = document.getElementById('author');
 const quoteBtn = document.getElementById('new-quote');
+const twitterBtn = document.getElementById('twitter');
 
 let apiQuotes = [];
 
@@ -18,10 +19,12 @@ function newQuote() {
         quoteAuthor.textContent = quote.author;
     }
     // Check quote length to change style
-    if (quote.text.length > 150) {
+    if (quote.text.length > 120) {
         quoteText.classList.add('long-quote');
+        // console.log(quote.text.length);
     } else {
         quoteText.classList.remove('long-quote');
+        // console.log(quote.text.length);
     }
     quoteText.textContent = quote.text; 
 }
@@ -37,8 +40,15 @@ async function QuoteApi() {
     newQuote();
 }
 
+// Tweet post 
+function addPost() {
+    window.open(`https://twitter.com/intent/tweet?text=${quoteText.textContent}-${quoteAuthor.textContent}`);
+}
+
 // Event Listeners
 quoteBtn.addEventListener('click', newQuote);
+twitterBtn.addEventListener('click', addPost);
+
 
 // On Load  
 QuoteApi();
